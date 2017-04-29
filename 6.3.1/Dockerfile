@@ -30,6 +30,11 @@ RUN set -x \
     && rm sonarqube.zip* \
     && rm -rf $SONARQUBE_HOME/bin/*
 
+RUN set -x \
+    && curl -o $SONARQUBE_HOME/extensions/plugins/sonar-cxx-plugin.jar -fSL https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-0.9.7/sonar-cxx-plugin-0.9.7.jar
+    && curl -o $SONARQUBE_HOME/extensions/plugins/sslr-cxx-plugin.jar -fSL https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-0.9.7/sslr-cxx-toolkit-0.9.7.jar
+    
+ 
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
